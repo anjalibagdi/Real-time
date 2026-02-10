@@ -110,6 +110,30 @@ function Dashboard({
                     </div>
                 </div>
 
+
+
+                <div className="control-group">
+                    <h3>🔍 Filter</h3>
+                    <div className="button-group">
+                        <button
+                            onClick={() => onFilterChange(null)}
+                            className={`btn ${!filter ? 'btn-active' : ''}`}
+                        >
+                            All
+                        </button>
+                        {categories.map(cat => (
+                            <button
+                                key={cat}
+                                onClick={() => onFilterChange(cat)}
+                                className={`btn ${filter === cat ? 'btn-active' : ''}`}
+                            >
+                                {cat}
+                            </button>
+                        ))}
+                    </div>
+                </div>
+
+
                 <div className="control-group">
                     <h3>🔍 Filter</h3>
                     <div className="button-group">
