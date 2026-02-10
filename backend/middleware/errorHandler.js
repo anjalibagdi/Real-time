@@ -105,6 +105,14 @@ function notFoundHandler(req, res) {
     });
 }
 
+function notHandler(req, res) {
+    res.status(404).json({
+        error: 'Not Found',
+        message: `Route ${req.method} ${req.originalUrl} not found`,
+        timestamp: new Date().toISOString()
+    });
+}
+
 /**
  * Async handler wrapper to catch errors in async route handlers
  */
