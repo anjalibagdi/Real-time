@@ -20,11 +20,11 @@ const connectDB = async () => {
       });
 
       console.log(`✅ MongoDB Connected: ${conn.connection.host}`);
-      
+
       // Handle connection events
-      mongoose.connection.on('error', (err) => {
-        console.error('❌ MongoDB connection error:', err);
-      });
+      // mongoose.connection.on('error', (err) => {
+      //   console.error('❌ MongoDB connection error:', err);
+      // });
 
       mongoose.connection.on('disconnected', () => {
         console.warn('⚠️  MongoDB disconnected. Attempting to reconnect...');
@@ -38,12 +38,12 @@ const connectDB = async () => {
     } catch (error) {
       retries++;
       console.error(`❌ MongoDB connection attempt ${retries} failed:`, error.message);
-      
+
       if (retries === maxRetries) {
         console.error('❌ Max retries reached. Exiting...');
         process.exit(1);
       }
-      
+
       // Wait before retrying (exponential backoff)
       const waitTime = Math.min(1000 * Math.pow(2, retries), 10000);
       console.log(`⏳ Retrying in ${waitTime / 1000} seconds...`);
