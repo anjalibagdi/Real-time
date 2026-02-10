@@ -127,6 +127,8 @@ class DataGenerator {
             // Batch insert to database
             await DataRecord.createBatch(records);
 
+            console.log('Batch processed:', records);
+
             // Broadcast to WebSocket clients
             this.broadcast({
                 type: 'batch',

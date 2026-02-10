@@ -73,6 +73,8 @@ router.delete('/records/:id',
     asyncHandler(async (req, res) => {
         const { id } = req.params;
 
+        console.log('Deleting record:', id);
+
         const record = await DataRecord.findByIdAndDelete(id);
 
         if (!record) {
